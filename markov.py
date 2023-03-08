@@ -18,36 +18,47 @@ def open_and_read_file(file_path):
     return all_of_it 
 
 
-# def make_chains(text_string):
-#     """Take input text as string; return dictionary of Markov chains.
+def make_chains(text_string) :
+    """Take input text as string; return dictionary of Markov chains.
 
-#     A chain will be a key that consists of a tuple of (word1, word2)
-#     and the value would be a list of the word(s) that follow those two
-#     words in the input text.
+    A chain will be a key that consists of a tuple of (word1, word2)
+    and the value would be a list of the word(s) that follow those two
+    words in the input text.
 
-#     For example:
+    For example:
 
-#         >>> chains = make_chains('hi there mary hi there juanita')
+        >>> chains = make_chains('hi there mary hi there juanita')
 
-#     Each bigram (except the last) will be a key in chains:
+    Each bigram (except the last) will be a key in chains:
 
-#         >>> sorted(chains.keys())
-#         [('hi', 'there'), ('mary', 'hi'), ('there', 'mary')]
+        >>> sorted(chains.keys())
+        [('hi', 'there'), ('mary', 'hi'), ('there', 'mary')]
 
-#     Each item in chains is a list of all possible following words:
+    Each item in chains is a list of all possible following words:
 
-#         >>> chains[('hi', 'there')]
-#         ['mary', 'juanita']
+        >>> chains[('hi', 'there')]
+        ['mary', 'juanita']
 
-#         >>> chains[('there','juanita')]
-#         [None]
-#     """
+        >>> chains[('there','juanita')]
+        [None]
+    """
 
-#     chains = {}
+    chains = {}
 
-#     # your code goes here
+   # text_string is all_of_it
+   # split string by whitespace words = split string
+    words = text_string.split(" ")
 
-#     return chains
+    for i in range(len(words) - 2):
+        chains_key = (words[i], words[i+1])
+        chains_value = words[i + 2]
+
+        chains[chains_key] = chains_value
+
+
+    return chains
+
+# make_chains(open_and_read_file(file_path))
 
 
 # def make_text(chains):
